@@ -1,0 +1,28 @@
+{
+  "name": "springbokjs-db-mongo",
+  "description": "springbokjs-db mongo implementation",
+  "keywords": [
+    "springbokjs",
+    "springbokjs-db"
+  ],
+  "version": "0.0.1",
+  "homepage": "http://springbokjs.org",
+  "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "repository": "git://github.com/christophehurpeau/springbokjs-db.git",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --harmony --recursive -u tdd tests/lib"
+  },
+  "main": "./lib/index.js",
+  "dependencies": {
+    "mongo": "^0.1.0",
+    "mongodb": "^1.4.16",
+    "springbokjs-db": "^0.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8",
+    "mocha": "^1.21",
+    "proclaim": "^2.0",
+    "springbokjs-library": "^2.6.0"
+  }
+}
