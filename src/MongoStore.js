@@ -54,7 +54,8 @@ export class MongoStore extends AbstractStore {
 
     update(options) {
         return new Promise((resolve, reject) => {
-            this.collection.update(options.criteria, options.data, options, (err, count) => {
+            var data = !options.partialUpdate ? options.data : { $set: options.data };
+            this.collection.update(options.criteria, data, options, (err, count) => {
                 if (err) {
                     return reject(err);
                 }
