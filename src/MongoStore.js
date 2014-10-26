@@ -108,10 +108,10 @@ MongoStore.ObjectID = ObjectID;
 
 MongoStore.initialize = function(db) {
     return new Promise((resolve, reject) => {
-        var options = Object.assign(db.options, {
+        var options = Object.assign({
             host: 'localhost',
             port: '27017'
-        });
+        }, db.options);
         var connectionString = 'mongodb://' + (options.user ? options.user + ':' + options.password + '@' : '' )
                             + options.host + ':' + options.port + '/' + db.dbName;
         mongodb.MongoClient.connect(connectionString, function(err, connection) {
