@@ -112,7 +112,8 @@ MongoStore.initialize = function(db) {
             host: 'localhost',
             port: '27017'
         });
-        var connectionString = 'mongodb://' + options.host + ':' + options.port + '/' + db.dbName;
+        var connectionString = 'mongodb://' + (options.user ? options.user + ':' + options.password + '@' : '' )
+                            + options.host + ':' + options.port + '/' + db.dbName;
         mongodb.MongoClient.connect(connectionString, function(err, connection) {
             if (err) {
                 console.error('connection error:', err);
