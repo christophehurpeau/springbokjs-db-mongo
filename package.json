@@ -16,8 +16,10 @@
   "main": "./lib/index.js",
   "dependencies": {
     "mongo": "^0.1.0",
-    "mongodb": "^1.4.19",
-    "springbokjs-db": "^0.0.5"
+    "mongodb": "^1.4.19"
+  },
+  "peerDependencies": {
+    "springbokjs-db": "git://github.com/christophehurpeau/springbokjs-db"
   },
   "devDependencies": {
     "gulp": "^3.8",
