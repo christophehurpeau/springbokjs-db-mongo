@@ -19,7 +19,7 @@
     "mongodb": "^1.4.19"
   },
   "peerDependencies": {
-    "springbokjs-db": "git://github.com/christophehurpeau/springbokjs-db"
+    "springbokjs-db": "*"
   },
   "devDependencies": {
     "gulp": "^3.8",
