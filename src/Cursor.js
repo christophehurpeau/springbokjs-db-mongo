@@ -50,10 +50,6 @@ export class Cursor extends AbstractCursor {
         return Promise.resolve(this._result);
     }
 
-    model() {
-        return Promise.resolve(this._store.toVO(this._result));
-    }
-
     remove() {
         return this._store.deleteByKey(this.key);
     }
