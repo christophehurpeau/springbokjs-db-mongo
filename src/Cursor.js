@@ -37,11 +37,11 @@ export class Cursor extends AbstractCursor {
 
     count(applyLimit) {
         return new Promise((resolve, reject) => {
-            this._cursor.count(applyLimit, (err) => {
+            this._cursor.count(applyLimit, (err, result) => {
                 if (err) {
                     return reject(err);
                 }
-                resolve();
+                resolve(result);
             });
         });
     }
@@ -56,7 +56,7 @@ export class Cursor extends AbstractCursor {
 
     forEach(callback) {
         return this.forEachResults((result) => {
-            callback(this._store.toVO(result));
+            return callback(this._store.toVO(result));
         });
     }
 
@@ -68,9 +68,13 @@ export class Cursor extends AbstractCursor {
                 }
                 if (result === null) {
                     // end !
-                    return resolve();
+                    return this.close().then(resolve);
                 }
-                callback(result);
+                try {
+                    callback(result);
+                } catch (err) {
+                    reject(err);
+                }
             });
         });
     }
