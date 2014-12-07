@@ -98,7 +98,7 @@ export class MongoStore extends AbstractStore {
                 if (err) {
                     return reject(err);
                 }
-                resolve(new Cursor(cursor, this));
+                resolve(new Cursor(cursor, this, query));
             });
         });
     }

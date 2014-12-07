@@ -1,9 +1,14 @@
 var AbstractCursor = require('springbokjs-db/lib/AbstractCursor').AbstractCursor;
 
 export class Cursor extends AbstractCursor {
-    constructor(cursor, store) {
+    constructor(cursor, store, query) {
         this._cursor = cursor;
         this._store = store;
+        this._query = query;
+    }
+
+    get query() {
+        return this._query;
     }
 
     advance(count) {
