@@ -124,3 +124,7 @@ MongoStore.initialize = function(db) {
         });
     });
 };
+
+MongoStore.close = function(db) {
+    db.connection.close();
+};
