@@ -101,8 +101,10 @@ export class Cursor extends AbstractCursor {
     }
 
     close() {
-        this._cursor.close();
-        this._cursor = this._store = this._result = undefined;
+        if (this._cursor) {
+            this._cursor.close();
+            this._cursor = this._store = this._result = undefined;
+        }
         return Promise.resolve();
     }
 }
