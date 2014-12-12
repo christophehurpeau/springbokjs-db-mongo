@@ -73,7 +73,8 @@ export class Cursor extends AbstractCursor {
                 }
                 if (result === null) {
                     // end !
-                    return this.close().then(resolve);
+                    this.close();
+                    return resolve();
                 }
                 try {
                     callback(result);
@@ -100,9 +101,8 @@ export class Cursor extends AbstractCursor {
     }
 
     close() {
-        return new Promise((resolve, reject) => {
-            this._cursor.close(resolve);
-            this._cursor = this._store = this._result = undefined;
-        });
+        this._cursor.close();
+        this._cursor = this._store = this._result = undefined;
+        return Promise.resolve();
     }
 }
