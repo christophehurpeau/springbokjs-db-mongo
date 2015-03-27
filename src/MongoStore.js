@@ -9,7 +9,8 @@ export class MongoStore extends AbstractStore {
         this.manager.VO.keyPath = '_id';
         return new Promise((resolve, reject) => {
             if (!this.manager.VO.name || this.manager.VO.name.toLowerCase() === 'function') {
-                throw new Error('Unable to find model name');
+                throw new Error('Unable to find model name ' + this.manager.VO.name +
+                                        ', ' + this.manager.name);
             }
             this.db.connection.collection(this.manager.VO.name, {w: 1}, (err, collection) => {
                 if (err) {

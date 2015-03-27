@@ -67,6 +67,7 @@ export class Cursor extends AbstractCursor {
 
     forEachResults(callback) {
         return new Promise((resolve, reject) => {
+            var waitFor = 0;
             this._cursor.each((err, result) => {
                 if (err) {
                     return reject(err);
@@ -74,11 +75,25 @@ export class Cursor extends AbstractCursor {
                 if (result === null) {
                     // end !
                     this.close();
-                    return resolve();
+                    if (waitFor === 0) {
+                        console.log('resolve');
+                        resolve();
+                    }
+                    return;
                 }
                 try {
-                    callback(result);
+                    var result = callback(result);
+                    if (result && typeof result.then === 'function') {
+                        waitFor++;
+                        result.then(() => {
+                            console.log(waitFor);
+                            if (--waitFor === 0) {
+                                resolve();
+                            }
+                        }).catch(reject);
+                    }
                 } catch (err) {
+                    console.log(err.stack || err.message);
                     reject(err);
                 }
             });
