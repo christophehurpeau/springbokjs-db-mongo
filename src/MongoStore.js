@@ -56,11 +56,11 @@ export class MongoStore extends AbstractStore {
     update(options) {
         return new Promise((resolve, reject) => {
             var data = !options.partialUpdate ? options.data : { $set: options.data };
-            this.collection.update(options.criteria, data, options, (err, count) => {
+            this.collection.update(options.criteria, data, options, (err, result) => {
                 if (err) {
                     return reject(err);
                 }
-                resolve(count);
+                resolve(result.n);
             });
         });
     }
@@ -71,7 +71,7 @@ export class MongoStore extends AbstractStore {
                 if (err) {
                     return reject(err);
                 }
-                resolve(count);
+                resolve(result.n);
             });
         });
     }
