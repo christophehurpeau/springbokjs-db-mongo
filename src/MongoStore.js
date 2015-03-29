@@ -67,7 +67,7 @@ export class MongoStore extends AbstractStore {
 
     remove(options) {
         return new Promise((resolve, reject) => {
-            this.collection.remove(options.criteria, options, (err, count) => {
+            this.collection.remove(options.criteria, options, (err, result) => {
                 if (err) {
                     return reject(err);
                 }

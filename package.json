@@ -5,7 +5,7 @@
     "springbokjs",
     "springbokjs-db"
   ],
-  "version": "0.2.2",
+  "version": "0.2.3",
   "homepage": "http://springbokjs.org",
   "license": "MIT",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
@@ -17,7 +17,7 @@
   "dependencies": {
     "mongo": "^0.1.0",
     "mongodb": "^2.0.25",
-    "springbokjs-db": "^0.2.1"
+    "springbokjs-db": "^0.2.2"
   },
   "devDependencies": {
     "gulp": "^3.8",

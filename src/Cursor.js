@@ -76,7 +76,6 @@ export class Cursor extends AbstractCursor {
                     // end !
                     this.close();
                     if (waitFor === 0) {
-                        console.log('resolve');
                         resolve();
                     }
                     return;
@@ -86,7 +85,6 @@ export class Cursor extends AbstractCursor {
                     if (result && typeof result.then === 'function') {
                         waitFor++;
                         result.then(() => {
-                            console.log(waitFor);
                             if (--waitFor === 0) {
                                 resolve();
                             }
