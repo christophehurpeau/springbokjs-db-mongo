@@ -121,3 +121,20 @@ export class Cursor extends AbstractCursor {
         return Promise.resolve();
     }
 }
+
+Cursor.prototype[Symbol.iterator] = function() {
+    return {
+        next: () => {
+            return {
+                done: this._cursor === undefined,
+                value: this.next().then((key) => {
+                    if (key === null) {
+                        this.close();
+                        return undefined;
+                    }
+                    return this.vo()
+                })
+            };
+        }
+    };
+}
