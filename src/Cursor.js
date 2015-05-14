@@ -132,9 +132,9 @@ Cursor.prototype[Symbol.iterator] = function() {
                         this.close();
                         return undefined;
                     }
-                    return this.vo()
+                    return this.vo();
                 })
             };
         }
     };
-}
+};
